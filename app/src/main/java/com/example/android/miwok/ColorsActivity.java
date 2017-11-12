@@ -21,8 +21,7 @@ public class ColorsActivity extends AppCompatActivity {
         words.add(new Word("gray", "ṭopoppi"));
         words.add(new Word("black", "kululli"));
         words.add(new Word("white", "kelelli"));
-        words.add(new Word("dusty yellow", "ṭopiisә"));
-        words.add(new Word("mustard yellow", "chiwiiṭә"));
+        words.add(new Word("dusty yellow", "chiwiiṭә"));
 
         WordAdapter wordAdapter =
                 new WordAdapter(this, 0, words);
