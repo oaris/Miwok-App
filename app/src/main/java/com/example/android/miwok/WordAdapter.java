@@ -17,7 +17,7 @@ import java.util.List;
  * Created by brand on 11/12/2017.
  */
 
-public class WordAdapter extends ArrayAdapter<Word> {
+public class    WordAdapter extends ArrayAdapter<Word> {
 
     public WordAdapter(@NonNull Context context, int resource, @NonNull List<Word> objects) {
         super(context, 0, objects);
