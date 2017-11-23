@@ -1,6 +1,6 @@
 package com.example.android.miwok;
 
-import android.app.Activity;
+
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -8,9 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,12 +37,16 @@ public class    WordAdapter extends ArrayAdapter<Word> {
         // Find the TextView in the list_item.xml layout with the ID numbers
         TextView miworkWordTextView = (TextView) listItemView.findViewById(R.id.miwok_text_view);
         TextView defaultWordTextView = (TextView) listItemView.findViewById(R.id.default_text_view);
+        ImageView imageView = (ImageView) listItemView.findViewById(R.id.icon_image_view);
 
         // set this text on the miwok TextView
         miworkWordTextView.setText(currentWordInList.getMiwokTranslation());
+
         // set this text on the default TextView
         defaultWordTextView.setText(currentWordInList.getDefaultTranslation());
 
+        // set this image on the default TextView
+        imageView.setImageResource(currentWordInList.getImageResourceId());
 
         return listItemView;
     }
