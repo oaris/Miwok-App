@@ -4,6 +4,7 @@ package com.example.android.miwok;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +20,11 @@ import java.util.List;
 
 public class    WordAdapter extends ArrayAdapter<Word> {
 
-    public WordAdapter(@NonNull Context context, int resource, @NonNull List<Word> objects) {
+    private int mColorResourceId;
+
+    public WordAdapter(@NonNull Context context, int resource, @NonNull List<Word> objects, int colorResourceId) {
         super(context, 0, objects);
+        this.mColorResourceId = colorResourceId;
     }
 
     @NonNull
@@ -45,16 +49,26 @@ public class    WordAdapter extends ArrayAdapter<Word> {
         // set this text on the default TextView
         defaultWordTextView.setText(currentWordInList.getDefaultTranslation());
 
-        // set this image on the default TextView
+        // Check if an image is provided for this word or not
         if (currentWordInList.hasImage()) {
+            //If an image is available, display the provided image based upon the resource ID
             imageView.setImageResource(currentWordInList.getImageResourceId());
+            //Make sure the image is visible
             imageView.setVisibility(View.VISIBLE);
         }
         else {
+            //Otherwise hide the ImageView (set visibility to gone)
             imageView.setVisibility(View.GONE);
         }
 
+        //Set the theme color for the list item
+        View textContainer = listItemView.findViewById(R.id.text_container);
 
+        //Find the color that the resource ID maps to
+        int color = ContextCompat.getColor(getContext(), mColorResourceId);
+
+        //Set the background color of the text container View
+        textContainer.setBackgroundColor(color);
 
 
         return listItemView;
